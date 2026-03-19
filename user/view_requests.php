@@ -7,7 +7,17 @@ $user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM relief_requests WHERE user_id='$user_id'";
 $result = mysqli_query($conn,$sql);
 ?>
-<link rel="stylesheet" href="../css/style.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Relief Requests</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
 <div class="container">
 
 <h2>My Relief Requests</h2>
@@ -29,7 +39,19 @@ while($row = mysqli_fetch_assoc($result)){
 <tr>
 
 <td><?php echo $row['id']; ?></td>
-<td><?php echo $row['relief_type']; ?></td>
+
+<td>
+    <?php 
+    $types = explode(",", $row['relief_type']);
+    foreach($types as $t){
+        echo "<span style='background:#3498db;color:white;padding:2px 7px;
+              border-radius:10px;margin:2px;display:inline-block;font-size:12px;'>
+              " . trim($t) . "
+              </span>";
+    }
+    ?>
+</td>
+
 <td><?php echo $row['district']; ?></td>
 <td><?php echo $row['severity_level']; ?></td>
 
@@ -50,3 +72,6 @@ while($row = mysqli_fetch_assoc($result)){
 <br>
 <a href="dashboard.php">Back</a>
 </div>
+
+</body>
+</html>

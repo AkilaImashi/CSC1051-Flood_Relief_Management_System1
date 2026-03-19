@@ -59,13 +59,15 @@ window.location='create_request.php';
 <form method="POST" name="requestForm" onsubmit="return validateRequestForm()">
 
 
-<label>Relief Type</label><br>
-
-<input type="checkbox" name="relief_type[]" value="Food"> Food<br>
-<input type="checkbox" name="relief_type[]" value="Water"> Water<br>
-<input type="checkbox" name="relief_type[]" value="Medicine"> Medicine<br>
-<input type="checkbox" name="relief_type[]" value="Clothes"> Clothes<br>
-<input type="checkbox" name="relief_type[]" value="Shelter"> Shelter<br>
+<label>Relief Type</label>
+<select name="relief_type[]" multiple required size="5">
+    <option value="Food">Food</option>
+    <option value="Water">Water</option>
+    <option value="Medicine">Medicine</option>
+    <option value="Clothes">Clothes</option>
+    <option value="Shelter">Shelter</option>
+</select>
+<small style="color:#888">Hold Ctrl (Windows) or Cmd (Mac) to select multiple</small>
 
 <br><br>
 
@@ -126,7 +128,6 @@ Address
 <textarea name="address"></textarea>
 
 <br><br>
-
 
 <label>Family Members</label>
 <input type="number" name="family_members" min="1" required>
